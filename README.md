@@ -1,2 +1,2 @@
 # SpanishVerbQuiz
-A simple quiz app to learn Spanish verb conjugations
+A simple android quiz app to learn Spanish verb conjugations
