@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/questionText1"
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        tools:text="Future Tense" />
+
+    <TextView
+        android:id="@+id/questionText2"
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="16dp"
+        tools:text="Future Tense" />
+
+    <TextView
+        android:id="@+id/questionText3"
+        android:layout_width="356dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="80dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:text="Future Tense" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/questionText3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick = "buttonPressed"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick = "buttonPressed"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick = "buttonPressed"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick="buttonPressed"/>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick = "buttonPressed"/>
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="358dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/button5"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:text="Button"
+        android:textAllCaps="false"
+        android:onClick = "buttonPressed"/>
+
+</android.widget.RelativeLayout>
