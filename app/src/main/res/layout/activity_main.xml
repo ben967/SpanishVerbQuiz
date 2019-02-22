@@ -20,12 +20,12 @@
         android:text="TextView"
         android:textSize="32dp"
         android:textStyle="bold"
-        tools:text="Future Tense" />
+        tools:text="questionText1" />
 
     <TextView
         android:id="@+id/questionText2"
         android:layout_width="356dp"
-        android:layout_height="40dp"
+        android:layout_height="20dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -35,29 +35,45 @@
         android:gravity="center"
         android:text="TextView"
         android:textSize="16dp"
-        tools:text="Future Tense" />
+        tools:text="questionText2" />
 
     <TextView
         android:id="@+id/questionText3"
         android:layout_width="356dp"
-        android:layout_height="40dp"
+        android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:background="#FFFFFF"
         android:gravity="center"
         android:text="TextView"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:text="Future Tense" />
+        tools:text="questionText3" />
+
+    <TextView
+        android:id="@+id/questionText4"
+        android:layout_width="356dp"
+        android:layout_height="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="85dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:text="questionText4" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="358dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/questionText3"
+        android:layout_below="@+id/questionText4"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"

@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity{
     int numVerbs;
     int numPronouns;
     int numConjugations;
-    List verbList;
+    List verbList, conjugationData;
     String correctConjugation;
+    String currentTense = "";
 
     // Set up the verb conjugations list
     String[] pronounsList = {"yo","tu", "el/ella/usted","nosotros/nosotras", "vosotros/vosotras", "ellos/ellas/ustedes"};
-    String[] conjugationEndings = {"é", "ás", "á", "emos", "éis", "án"};
+    String[] conjugationEndings = {"o", "as", "a", "amos", "áis", "an"};
 
     // Set up the random number generator
     Random r = new Random();
@@ -43,8 +44,18 @@ public class MainActivity extends AppCompatActivity{
         numConjugations = conjugationEndings.length;
         numPronouns = pronounsList.length;
 
+        // Load the conjugation list(s)
+        loadConjugations();
+
         // Update the UI on load
         setData();
+    }
+
+    public void loadConjugations(){
+        InputStream inputStream = getResources().openRawResource(R.raw.el_presente_del_indicativo);
+        csvFile csvFile = new csvFile(inputStream);
+        conjugationData = csvFile.read();
+        currentTense = conjugationData.get(0).toString();
     }
 
     public void setData(){
@@ -68,7 +79,8 @@ public class MainActivity extends AppCompatActivity{
         // Update the text fields
         ((TextView) findViewById(R.id.questionText1)).setText(verbData[1]);
         ((TextView) findViewById(R.id.questionText2)).setText(verbData[2]);
-        ((TextView) findViewById(R.id.questionText3)).setText(randomPronoun);
+        ((TextView) findViewById(R.id.questionText4)).setText(randomPronoun);
+        ((TextView) findViewById(R.id.questionText3)).setText(currentTense);
 
         // Update the button texts
         String[] verbConjugations = getConjugations(verbData[1]);
