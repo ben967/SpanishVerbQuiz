@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
 
     // Set up the verb conjugations list
     String[] pronounsList = {"yo","tu", "el/ella/usted","nosotros/nosotras", "vosotros/vosotras", "ellos/ellas/ustedes"};
-    String[] conjugationEndings = {"o", "as", "a", "amos", "áis", "an"};
+    String[] conjugationEndings = {"o", "as", "a", "amos", "áis", "an", "o", "es", "e", "emos", "éis", "en", "o", "es", "e", "imos", "ís", "en"};
 
     // Set up the random number generator
     Random r = new Random();
@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void loadConjugations(){
-        InputStream inputStream = getResources().openRawResource(R.raw.el_presente_del_indicativo);
+        InputStream inputStream = getResources().openRawResource(R.raw.tense_conjugation_table);
         csvFile csvFile = new csvFile(inputStream);
         conjugationData = csvFile.read();
-        currentTense = conjugationData.get(0).toString();
+        currentTense = conjugationData.get(0).toString().split(",")[0];
     }
 
     public void setData(){
@@ -74,7 +74,18 @@ public class MainActivity extends AppCompatActivity{
         String[] verbData = verbLine.split(":");
         randInt = r.nextInt((numPronouns - 0) - 1);
         String randomPronoun = pronounsList[randInt];
-        correctConjugation = verbData[1].substring(0, verbData[1].length() - 2) + conjugationEndings[randInt];
+        int index = 0;
+        String verbEnding = verbData[1].substring(verbData[1].length() - 2, verbData[1].length());
+        if (verbEnding == "ar"){
+            index = 0;
+        }
+        else if (verbEnding == "er"){
+            index = 6;
+        }
+        else {
+            index = 12;
+        }
+        correctConjugation = verbData[1].substring(0, verbData[1].length() - 2) + conjugationEndings[randInt+index];
 
         // Update the text fields
         ((TextView) findViewById(R.id.questionText1)).setText(verbData[1]);
@@ -95,10 +106,20 @@ public class MainActivity extends AppCompatActivity{
     public String[] getConjugations(String verb){
         String verbStem = verb.substring(0, verb.length() - 2);
         String verbEnding = verb.substring(verb.length() -2, verb.length());
-        String [] conjugations = conjugationEndings.clone();
-        for( int i = 0; i <= conjugationEndings.length - 1; i++)
+        int index = 0;
+        if (verbEnding == "ar"){
+            index = 0;
+        }
+        else if (verbEnding == "er"){
+            index = 6;
+        }
+        else {
+            index = 12;
+        }
+        String [] conjugations = Arrays.copyOfRange(conjugationEndings, index, index+6);
+        for( int i = 0; i <= conjugations.length - 1; i++)
         {
-            conjugations[i] = verbStem + conjugationEndings[i];
+            conjugations[i] = verbStem + conjugationEndings[index+i];
         }
         Collections.shuffle(Arrays.asList(conjugations));
         return conjugations;
