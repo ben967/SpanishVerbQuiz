@@ -72,14 +72,15 @@ public class MainActivity extends AppCompatActivity{
         randInt = r.nextInt((numVerbs - 0) - 1);
         String verbLine = verbList.get(randInt).toString();
         String[] verbData = verbLine.split(":");
-        randInt = r.nextInt((numPronouns - 0) - 1);
+        randInt = r.nextInt((numPronouns) - 1);
         String randomPronoun = pronounsList[randInt];
         int index = 0;
+        String verbStem = verbData[1].substring(0, verbData[1].length() - 2);
         String verbEnding = verbData[1].substring(verbData[1].length() - 2, verbData[1].length());
-        if (verbEnding == "ar"){
+        if (verbEnding.equals("ar")){
             index = 0;
         }
-        else if (verbEnding == "er"){
+        else if (verbEnding.equals("er")){
             index = 6;
         }
         else {
@@ -107,10 +108,10 @@ public class MainActivity extends AppCompatActivity{
         String verbStem = verb.substring(0, verb.length() - 2);
         String verbEnding = verb.substring(verb.length() -2, verb.length());
         int index = 0;
-        if (verbEnding == "ar"){
+        if (verbEnding.equals("ar")){
             index = 0;
         }
-        else if (verbEnding == "er"){
+        else if (verbEnding.equals("er")){
             index = 6;
         }
         else {
