@@ -17,16 +17,15 @@ public class MainActivity extends AppCompatActivity{
 
     // Global vars
     int randInt;
-    int numVerbs;
+    int numVerbs, numTenses;
     int numPronouns;
-    int numConjugations;
     List verbList, conjugationData;
     String correctConjugation;
     String currentTense = "";
 
     // Set up the verb conjugations list
     String[] pronounsList = {"yo","tu", "el/ella/usted","nosotros/nosotras", "vosotros/vosotras", "ellos/ellas/ustedes"};
-    String[] conjugationEndings = {"o", "as", "a", "amos", "áis", "an", "o", "es", "e", "emos", "éis", "en", "o", "es", "e", "imos", "ís", "en"};
+    String[] conjugationEndings;
 
     // Set up the random number generator
     Random r = new Random();
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity{
         csvFile csvFile = new csvFile(inputStream);
         verbList = csvFile.read();
         numVerbs = verbList.size();
-        numConjugations = conjugationEndings.length;
         numPronouns = pronounsList.length;
 
         // Load the conjugation list(s)
@@ -55,7 +53,11 @@ public class MainActivity extends AppCompatActivity{
         InputStream inputStream = getResources().openRawResource(R.raw.tense_conjugation_table);
         csvFile csvFile = new csvFile(inputStream);
         conjugationData = csvFile.read();
-        currentTense = conjugationData.get(0).toString().split(",")[0];
+        numTenses = conjugationData.size();
+        randInt = numTenses-1;
+        currentTense = conjugationData.get(randInt).toString().split(",")[0];
+        conjugationEndings = conjugationData.get(randInt).toString().split(",");
+        conjugationEndings = Arrays.copyOfRange(conjugationEndings, 1, 19);
     }
 
     public void setData(){
