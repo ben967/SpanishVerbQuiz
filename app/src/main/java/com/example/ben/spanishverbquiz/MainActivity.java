@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
     String[] conjugationEndings;
 
     // Set up the random number generator
-    Random r = new Random();
+    Random randGen = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity{
         ((Button) findViewById(R.id.button6)).setTextColor(0xffffffff);
 
         // Set the text and buttons to loaded verb data
-        randInt = r.nextInt((numVerbs - 0) - 1);
+        randInt = randGen.nextInt(numVerbs);
         String verbLine = verbList.get(randInt).toString();
         String[] verbData = verbLine.split(":");
-        randInt = r.nextInt((numPronouns) - 1);
+        randInt = randGen.nextInt(numPronouns);
         String randomPronoun = pronounsList[randInt];
         int index = 0;
         String verbStem = verbData[1].substring(0, verbData[1].length() - 2);
