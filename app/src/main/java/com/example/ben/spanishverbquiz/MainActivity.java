@@ -16,7 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity{
 
     // Global vars
-    int randInt;
+    int randVerb, randTense;
     int numVerbs, numTenses;
     int numPronouns;
     List verbList, conjugationData;
@@ -42,25 +42,20 @@ public class MainActivity extends AppCompatActivity{
         numVerbs = verbList.size();
         numPronouns = pronounsList.length;
 
-        // Load the conjugation list(s)
-        loadConjugations();
-
         // Update the UI on load
         setData();
     }
 
-    public void loadConjugations(){
-        InputStream inputStream = getResources().openRawResource(R.raw.tense_conjugation_table);
+    public void setData(){
+
+        InputStream inputStream = getResources().openRawResource(R.raw.tenseconjugationtable);
         csvFile csvFile = new csvFile(inputStream);
         conjugationData = csvFile.read();
         numTenses = conjugationData.size();
-        randInt = numTenses-1;
-        currentTense = conjugationData.get(randInt).toString().split(",")[0];
-        conjugationEndings = conjugationData.get(randInt).toString().split(",");
+        randTense = randGen.nextInt(numTenses);
+        currentTense = conjugationData.get(randTense).toString().split(",")[0];
+        conjugationEndings = conjugationData.get(randTense).toString().split(",");
         conjugationEndings = Arrays.copyOfRange(conjugationEndings, 1, 19);
-    }
-
-    public void setData(){
 
         // Set the button colors
         ((Button) findViewById(R.id.button1)).setTextColor(0xffffffff);
@@ -71,14 +66,13 @@ public class MainActivity extends AppCompatActivity{
         ((Button) findViewById(R.id.button6)).setTextColor(0xffffffff);
 
         // Set the text and buttons to loaded verb data
-        randInt = randGen.nextInt(numVerbs);
-        String verbLine = verbList.get(randInt).toString();
+        randVerb = randGen.nextInt(numVerbs);
+        String verbLine = verbList.get(randVerb).toString();
         String[] verbData = verbLine.split(":");
-        randInt = randGen.nextInt(numPronouns);
-        String randomPronoun = pronounsList[randInt];
+        randVerb = randGen.nextInt(numPronouns);
+        String randomPronoun = pronounsList[randVerb];
         int index = 0;
-        String verbStem = verbData[1].substring(0, verbData[1].length() - 2);
-        String verbEnding = verbData[1].substring(verbData[1].length() - 2, verbData[1].length());
+        String verbEnding = verbData[1].substring(verbData[1].length() - 2);
         if (verbEnding.equals("ar")){
             index = 0;
         }
@@ -88,7 +82,7 @@ public class MainActivity extends AppCompatActivity{
         else {
             index = 12;
         }
-        correctConjugation = verbData[1].substring(0, verbData[1].length() - 2) + conjugationEndings[randInt+index];
+        correctConjugation = verbData[1].substring(0, verbData[1].length() - 2) + conjugationEndings[randVerb+index];
 
         // Update the text fields
         ((TextView) findViewById(R.id.questionText1)).setText(verbData[1]);
@@ -108,7 +102,7 @@ public class MainActivity extends AppCompatActivity{
 
     public String[] getConjugations(String verb){
         String verbStem = verb.substring(0, verb.length() - 2);
-        String verbEnding = verb.substring(verb.length() -2, verb.length());
+        String verbEnding = verb.substring(verb.length() -2);
         int index = 0;
         if (verbEnding.equals("ar")){
             index = 0;
