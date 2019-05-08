@@ -42,11 +42,14 @@ public class MainActivity extends AppCompatActivity{
         numVerbs = verbList.size();
         numPronouns = pronounsList.length;
 
+        // Load the conjugations
+        getTense();
+
         // Update the UI on load
         setData();
     }
 
-    public void setData(){
+    public void getTense(){
 
         InputStream inputStream = getResources().openRawResource(R.raw.tenseconjugationtable);
         csvFile csvFile = new csvFile(inputStream);
@@ -56,6 +59,10 @@ public class MainActivity extends AppCompatActivity{
         currentTense = conjugationData.get(randTense).toString().split(",")[0];
         conjugationEndings = conjugationData.get(randTense).toString().split(",");
         conjugationEndings = Arrays.copyOfRange(conjugationEndings, 1, 19);
+
+    }
+
+    public void setData(){
 
         // Set the button colors
         ((Button) findViewById(R.id.button1)).setTextColor(0xffffffff);
@@ -128,6 +135,7 @@ public class MainActivity extends AppCompatActivity{
 
         if (buttonText.equals(correctConjugation)){
             tempButton.setTextColor(0xff00ff00);
+            getTense();
             setData();
         }
         else
